@@ -1,0 +1,18 @@
+.content-dashboard .card h4{
+    font-weight: bold;
+}
+
+.content-dashboard .card .icon-dashboard{
+    font-size: 50px;
+    color: #055bb7;
+}
+
+.content-dashboard .card .data{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-dashboard .card .data span{
+    font-size: 35px;
+    font-weight: bold;
+}

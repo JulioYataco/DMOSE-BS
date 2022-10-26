@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="../dist/css/adminlte.css">
+    <link rel="stylesheet" href="../plugins/animate.css/animate.min.css">
+    <link href="https://unpkg.com/smartwizard@6/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
+
+
+    <style>
+        :root {
+            --sw-border-color: #eeeeee;
+            --sw-toolbar-btn-color: #ffffff;
+            --sw-toolbar-btn-background-color: #055bb7;
+            --sw-anchor-default-primary-color: #f8f9fa;
+            --sw-anchor-default-secondary-color: #b0b0b1;
+            --sw-anchor-active-primary-color: #055bb7;
+            --sw-anchor-active-secondary-color: #ffffff;
+            --sw-anchor-done-primary-color: #90d4fa;
+            --sw-anchor-done-secondary-color: #fefefe;
+            --sw-anchor-disabled-primary-color: #f8f9fa;
+            --sw-anchor-disabled-secondary-color: #dbe0e5;
+            --sw-anchor-error-primary-color: #dc3545;
+            --sw-anchor-error-secondary-color: #ffffff;
+            --sw-anchor-warning-primary-color: #ffc107;
+            --sw-anchor-warning-secondary-color: #ffffff;
+            --sw-progress-color: #11a0e2;
+            --sw-progress-background-color: #f8f9fa;
+            --sw-loader-color: #11a0e2;
+            --sw-loader-background-color: #f8f9fa;
+            --sw-loader-background-wrapper-color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SmartWizard html -->
+    <div class="container mt-4">
+        <div id="smartwizard">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#step-1">
+                        <div class="num">1</div>
+                        Paso 1
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#step-2">
+                        <span class="num">2</span>
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#step-3">
+                        <span class="num">3</span>
+                        Step Title
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#step-4">
+                        <span class="num">4</span>
+                        Step Title
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
+                    paso content
+                </div>
+                <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="">Apellidos:</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
+                    Step content
+                </div>
+                <div id="step-4" class="tab-pane" role="tabpanel" aria-labelledby="step-4">
+                    Step content
+                </div>
+            </div>
+
+            <!-- Include optional progressbar HTML -->
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../plugins/jquery/jquery.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+
+    <script>
+        $('#smartwizard').smartWizard({
+            selected: 0, // Paso inicial seleccionado, 0 = primer paso  
+            theme: 'dots', // tema para el asistente, CSS relacionado debe incluirse para otro tema que no sea el predeterminado  
+            justified: true, // Justificación del menú de navegación. verdadero Falso 
+            autoAdjustHeight: true, // Ajusta automáticamente la altura del contenido 
+            backButtonSupport: true, // Enable the back button support
+            enableUrlHash: true, // Enable selection of the step based on url hash
+            transition: {
+                animation: 'css', // Effect on navigation, none|fade|slideHorizontal|slideVertical|slideSwing|css(Animation CSS class also need to specify)
+                prefixCss: 'animate__animated animate__faster',
+                fwdShowCss: 'animate__bounceIn',
+                fwdHideCss: 'animate__bounceOut',
+                bckShowCss: 'animate__bounceIn',
+                bckHideCss: 'animate__bounceOut'
+            },
+            style: { // CSS Class settings
+                mainCss: 'sw',
+                navCss: 'nav',
+                navLinkCss: 'nav-link',
+                contentCss: 'tab-content',
+                contentPanelCss: 'tab-pane',
+                themePrefixCss: 'sw-theme-',
+                anchorDefaultCss: 'default',
+                anchorDoneCss: 'done',
+                anchorActiveCss: 'active',
+                anchorDisabledCss: 'disabled',
+                anchorHiddenCss: 'hidden',
+                anchorErrorCss: 'error',
+                anchorWarningCss: 'warning',
+                justifiedCss: 'sw-justified',
+                btnCss: 'sw-btn',
+                btnNextCss: 'sw-btn-next',
+                btnPrevCss: 'sw-btn-prev',
+                loaderCss: 'sw-loading',
+                progressCss: 'progress',
+                progressBarCss: 'progress-bar',
+                toolbarCss: 'toolbar',
+                toolbarPrefixCss: 'toolbar-',
+            },
+            anchor: {
+                anchorClickable: true, // Enable/Disable anchor navigation
+                enableAllAnchors: true, // Activates all anchors clickable all times
+                markDoneStep: true, // Add done state on navigation
+                markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
+                removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared
+                enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
+            },
+            keyboard: {  // Ajustes para el teclado
+                keyNavigation: true, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
+                keyLeft: [37], // Left key code
+                keyRight: [39] // Right key code
+            },
+            //disabledSteps: [1], // Pasos desabilitados
+            //warningSteps: [1],  // Resaltar pasos con advertencia
+            //errorSteps: [0], // Resaltar paso con errores  
+            //hiddenSteps: [2, 3], // Pasos ocultos
+            getContent: provideContent,
+            toolbar: {
+                position: 'bottom', // none|top|bottom|both
+                showNextButton: true, // show/hide a Next button
+                showPreviousButton: true, // show/hide a Previous button
+                //extraHtml: '' // Extra html to show on toolbar
+                extraHtml: `<button class="btn btn-success" >Finish</button>
+                <button class="btn btn-secondary">Cancel</button>`
+            },
+            lang: { // Language variables for button
+                next: 'Siguiente',
+                previous: 'Anterior'
+            }
+        });
+
+        function provideContent(idx, stepDirection, stepPosition, selStep, callback) {
+            console.log(idx)
+            callback();
+        }
+
+    </script>
+</body>
+
+</html>

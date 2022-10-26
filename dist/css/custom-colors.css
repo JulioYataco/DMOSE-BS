@@ -1,0 +1,122 @@
+:root {
+    --sw-border-color: #eeeeee;
+    --sw-toolbar-btn-color: #ffffff;
+    --sw-toolbar-btn-background-color: #055bb7;
+    --sw-anchor-default-primary-color: #f8f9fa;
+    --sw-anchor-default-secondary-color: #b0b0b1;
+    --sw-anchor-active-primary-color: #055bb7;
+    --sw-anchor-active-secondary-color: #ffffff;
+    --sw-anchor-done-primary-color: #90d4fa;
+    --sw-anchor-done-secondary-color: #fefefe;
+    --sw-anchor-disabled-primary-color: #f8f9fa;
+    --sw-anchor-disabled-secondary-color: #dbe0e5;
+    --sw-anchor-error-primary-color: #dc3545;
+    --sw-anchor-error-secondary-color: #ffffff;
+    --sw-anchor-warning-primary-color: #ffc107;
+    --sw-anchor-warning-secondary-color: #ffffff;
+    --sw-progress-color: #11a0e2;
+    --sw-progress-background-color: #f8f9fa;
+    --sw-loader-color: #11a0e2;
+    --sw-loader-background-color: #f8f9fa;
+    --sw-loader-background-wrapper-color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode {
+    --sw-anchor-done-primary-color: #7ca2b8;
+    --sw-anchor-active-primary-color: #226bb9;
+}
+
+
+/*  
+* ==========================================================
+* COLORES DE FONDO
+* ==========================================================
+* */
+
+.bg-blue {
+    background: #055bb7;
+}
+
+.bg-cyan {
+    background: #11a0e2;
+}
+
+.bg-yellow {
+    background: #f6c500;
+}
+
+/*  
+* ==========================================================
+* COLORES DE TEXTO
+* ==========================================================
+* */
+.dark-mode .text-primary {
+    color: #5782b1 !important;
+}
+
+.dark-mode a.text-primary:hover,
+.dark-mode a.text-primary:focus {
+    color: #345c86 !important;
+}
+
+
+
+/*  
+* ==========================================================
+* SIDEBAR LEFT AND RIGHT
+* ==========================================================
+* */
+.control-sidebar-content .title {
+    text-transform: uppercase;
+    color: #f6c500;
+    border-bottom: 3px double #f6c500;
+}
+
+.control-sidebar-content .subtitle {
+    color: #11a0e2;
+}
+
+
+/*  
+* ==========================================================
+* DATA TABLES
+* ==========================================================
+* */
+.dark-mode .dt-button-collection {
+    background: #363535 !important;
+    color: aliceblue !important;
+}
+
+
+/*  
+* ==========================================================
+* CARDS
+* ==========================================================
+* */
+
+.dark-mode .card-default .card-header {
+    background: #f1f0f0;
+}
+
+.dark-mode .card .card .card:not(.card-outline) {
+    border: 1px solid rgb(51, 48, 48);
+    border: 1px solid rgb(168, 164, 164);
+}
+
+/*  
+* ==========================================================
+* FORM CONTROLS
+* ==========================================================
+* */
+
+.dark-mode input[type="time"]::-webkit-calendar-picker-indicator,
+.dark-mode input[type="datetime"]::-webkit-calendar-picker-indicator,
+.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/*  
+* ==========================================================
+* PRELOADER
+* ==========================================================
+* */

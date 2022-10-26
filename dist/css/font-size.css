@@ -1,0 +1,63 @@
+
+
+/* 
+* ================================================
+* TEXTO MEDIANO
+* ================================================
+* */
+.main-header.text-sm .user-menu a span{
+  font-size: 16px;
+}
+
+/* CONTENIDO */
+.content-wrapper.text-md .card-title {
+  font-size: 1.2em;
+}
+
+
+/* 
+* ================================================
+* TEXTO LARGO
+* ================================================
+* */
+
+/* NAVABR TOP */
+.main-header.text-md .user-menu a span{
+  font-size: 18px;
+}
+
+/* NAVABR LEFT */
+
+/* NAVABR RIGHT */
+
+/* CONTENIDO */
+.text-lg {
+  font-size: 1.25rem !important;
+}
+
+.content-wrapper.text-lg label,
+.content-wrapper.text-lg select,
+.content-wrapper.text-lg input{
+  font-size: 1.25rem !important;
+}
+
+.content-wrapper.text-lg .form-group {
+  margin-bottom: 1.8rem;
+}
+
+.content-wrapper.text-lg .nav-link,
+.content-wrapper.text-lg .btn{
+  font-size: 1.25rem;
+}
+
+
+.content-wrapper.text-lg .card-title {
+  font-size: 1.3em;
+}
+
+.content-wrapper.text-lg .dropdown-item{
+  font-size: 1.2rem;
+}
+.content-wrapper.text-lg .dropdown-item .item-icon{
+  width: 20px;
+}

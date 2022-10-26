@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container{
+      max-width: 1250px;
+      margin: auto;
+      padding: 1.5rem;
+    }
+
+    button{
+      padding: 8px 12px;
+      outline: none;
+      border: none;
+      border-radius: 0.5rem;
+      background: #055bb7;
+      color: white;
+    }
+
+    .mutation-container{
+      margin-top: 4em;
+      border: 2px solid blueviolet;
+    }
+
+    #testList{
+      background: #f5f5f5;
+      width: 180px;
+      height: 150px;
+      overflow-y: auto;
+      padding: 1.5rem 0.5rem;
+      
+    }
+    #testList li{
+      list-style: none;
+      padding: 5px 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <button id="btnAddElement">Añadir elemento</button>
+      <button id="btnStopObserver">Dejar de observar</button>
+    </div>
+    <div>Se han detectado <span id="mutationResults">0</span> mutaciones</div>
+    <div id="mutation" class="mutation-container"></div>
+
+    <ul id="testList">
+      <li>Elemento first</li>
+      <li>Elemento estatico</li>
+      <li>Elemento estatico</li>
+      <li>Elemento estatico</li>
+      <li>Elemento estatico</li>
+      <li>Elemento estatico</li>
+      <li>Elemento last</li>
+    </ul>
+  </div>
+
+  <script src="../dist/js/scripts/MutationObserver.js"></script>
+  <script src="../dist/js/scripts/demoInteraction.js"></script>
+  <script>
+    new MutationObserverDemo();
+    new IntersectionObserverEx();
+  </script>
+</body>
+</html>

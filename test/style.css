@@ -1,0 +1,104 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bg-blue{
+  background: #055bb7;
+}
+
+.bg-cyan{
+  background: #11a0e2;
+} 
+
+.bg-yellow{
+  background: #f6c500;
+}
+
+
+
+.container{
+  width: 80%;
+  height: 100%;
+  margin: 15px auto;
+}
+
+.timeline{
+  position: relative;
+  width: 100%;
+  background: #d9dfe6;
+}
+
+.timeline .content{
+  position: relative;
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+  align-items: center;
+  height: 100px;
+}
+
+.timeline .content .item{
+  position: relative;
+  background: #11a0e2;
+  color: #fff;
+  width: 100px;
+  height: 2px;
+  transition: all 0.5s ease-in-out;
+}
+
+.timeline .content .item a.link{
+  position: absolute;
+  text-decoration: none;
+  top: calc((100% - 40px) / 2);
+  left: calc((100% - 40px) / 2);
+  box-sizing: border-box;
+  width: 40px !important;
+  height: 40px !important;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  border: 2px solid #11a0e2;
+  background: #fff;
+  color: #055bb7;
+  transition: all 0.5s ease-in-out;
+}
+
+.timeline .content .item:hover,
+.timeline .content .item.active{
+  background: #055bb7;
+  height: 3px;
+  color: #fff;
+}
+
+.timeline .content .item:hover ~ .item,
+.timeline .content .item:hover ~ .item{
+  height: 2px;
+  background: #11a0e2;
+}
+
+.timeline .content .item:hover > .link,
+.timeline .content .item.active > .link{
+  border: 2px solid #055bb7;
+  background: #055bb7;
+  transform: scale(1.2);
+  color: #fff;
+}
+
+.timeline .content .item:hover ~ .item > .link,
+.timeline .content .item:hover ~ .item .link{
+  border: 2px solid #11a0e2;
+  background: #fff;
+  color: #055bb7;
+}
+
+.timeline .content .item a .icon-timeline{
+  position: relative;
+  margin: auto;
+  text-align: center;
+  font-size: 22px;
+  border-radius: inherit;
+}

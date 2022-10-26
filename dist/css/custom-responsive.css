@@ -1,0 +1,90 @@
+@media (max-width: 768px) {
+  .form-group-md-none{
+    margin-bottom: 1rem !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .hidden-xs{
+    display: none !important;
+  }
+}
+
+.item-icon{
+  width: 15px;
+  margin-right: 7px;
+}
+
+/* FIRMAS */
+.content-sign{
+  border-radius: 0.5rem;
+  max-height: 250px;
+  margin: auto;
+}
+.image-responsive{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: inherit;
+}
+
+.image-sign{
+  max-width: 500px;
+  max-height: 250px;
+  margin: auto;
+  object-fit: contain !important;
+}
+
+table{
+  border-radius: 0.5rem;
+  overflow: hidden;    
+}
+
+
+table tr td{
+  padding-top: 5px !important;
+  padding-bottom: 4px !important;
+}
+
+.gap-1{
+  gap: 1em;
+}
+
+.gap-2{
+  gap: 2em;
+}
+
+.gap-3{
+  gap: 3em;
+}
+
+
+
+@media (min-width: 768px) {
+  .gap-md-2{
+    gap: 2em;
+  }
+}
+
+
+
+
+
+/* 
+* ================================================================
+* DISEÑO DE LOS CHECKS
+* ================================================================
+*/
+.container-check{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container-check .content-check{
+  margin-right: 15px;
+}

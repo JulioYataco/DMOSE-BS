@@ -1,0 +1,22 @@
+.user-menu a span{
+  font-size: 16px;
+}
+
+.content-user{
+  padding: 5px !important;
+  border-radius: 0.5rem !important;
+  width: max-content !important;
+}
+
+.content-user hr{
+  height: 0;
+  margin: 0;
+}
+
+.content-user i{
+  width: 25px;
+  margin-left: 5px;
+}
+.content-user .dropdown-item{
+  font-size: 16px;
+}

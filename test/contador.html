@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .contador {
+      height: 155px;
+      width: 320px;
+      transform: rotate(180deg);
+      margin: 200px 100px;
+      position: relative;
+
+      background: rgb(42, 181, 190);
+    }
+
+    .numero {
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      font-size: 12.8em;
+      font-weight: bold;
+      font-family: sans-serif;
+      color: #555;
+      position: absolute;
+      transform: rotate(-180deg);
+      mix-blend-mode: screen;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .color_fondo {
+      transition: .2s;
+      transform-origin: bottom;
+      position: absolute;
+      display: block;
+      height: 0%;
+      width: 100%;
+      background-color: rgb(2, 5, 190);
+    }
+
+    .content-count {
+      background: #555;
+      padding: 15px;
+      margin: auto;
+      border-radius: 50%;
+      height: 150px;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      text-align: center;
+    }
+
+    .content-count span {
+      color: rgb(236, 234, 234);
+      font-size: 25px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+
+    /* CRONOMETRO */
+  </style>
+</head>
+
+<body>
+
+  <div class="contador">
+    <div class="color_fondo" id="fondo_color">
+
+    </div>
+    <div class="numero" id="numero">
+    </div>
+
+  </div>
+
+  <div class="container-color">
+    <div class="content-count">
+      <span id="hour">0</span>
+      <span>:</span>
+      <span id="minute">0</span>
+      <span>:</span>
+      <span id="second">0</span>
+    </div>
+  </div>
+
+  <script>
+    const color = document.getElementById('fondo_color')
+    const numero = document.getElementById('numero')
+
+    const idSecond = document.getElementById('second')
+    const idMinute = document.getElementById('minute')
+    const idHour = document.getElementById('second')
+
+    let cantidad = 0
+    let hour = 0
+    let minute = 0
+    let second = 0
+
+    
+    let timeOld = new Date();
+    let tiempo = setInterval(() => {
+      cantidad += 1
+      color.style.height = `${cantidad}%`
+      numero.textContent = cantidad
+      
+      let timeNew = new Date();
+      let cron = timeNew.getTime() - timeOld.getTime();
+      console.log(cron / 1000)
+      console.log(cron)
+
+      if (cantidad === 100) {
+        clearInterval(tiempo)
+      }
+    }, 300);
+
+
+  </script>
+</body>
+
+</html>

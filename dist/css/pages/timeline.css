@@ -1,0 +1,106 @@
+
+.bg-blue{
+  background: #055bb7;
+}
+
+.bg-cyan{
+  background: #11a0e2;
+} 
+
+.bg-yellow{
+  background: #f6c500;
+}
+
+@media (max-width: 768px) {
+  .form-group-lg-none{
+    margin-bottom: 1rem;
+  }
+}
+
+.timeline-horizontal{
+  position: relative;
+  width: 100%;
+  height: auto;
+  line-height: 60px;
+  padding: 40px 15px;
+  background: transparent;
+  background: #e9eaec;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: inherit;
+}
+
+
+.timeline-horizontal .content{
+  position: relative;
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+  align-items: center;
+  margin: auto;
+  background: #11a0e2;
+  border-radius: 50%;
+}
+
+.timeline-horizontal .content .item{
+  position: relative;
+  background: #11a0e2;
+  color: #fff;
+  width: 100px;
+  height: 2px;
+  transition: all 0.5s ease-in-out;
+}
+
+.timeline-horizontal .content .item a.link{
+  position: absolute;
+  text-decoration: none;
+  top: calc((100% - 40px) / 2);
+  left: calc((100% - 40px) / 2);
+  box-sizing: border-box;
+  width: 40px !important;
+  height: 40px !important;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  border: 2px solid #11a0e2;
+  background: #fff;
+  color: #11a0e2;
+  transition: all 0.5s ease-in-out;
+}
+
+.timeline-horizontal .content .item:hover,
+.timeline-horizontal .content .item.active{
+  background: #055bb7;
+  height: 2px;
+  color: #fff;
+}
+
+.timeline-horizontal .content .item:hover ~ .item,
+.timeline-horizontal .content .item:hover ~ .item{
+  height: 2px;
+  background: #11a0e2;
+}
+
+.timeline-horizontal .content .item:hover > .link,
+.timeline-horizontal .content .item.active > .link{
+  border: 2px solid #055bb7;
+  background: #055bb7;
+  transform: scale(1.2);
+  color: #fff;
+}
+
+.timeline-horizontal .content .item:hover ~ .item > .link,
+.timeline-horizontal .content .item:hover ~ .item .link{
+  border: 2px solid #11a0e2;
+  background: #fff;
+  color: #11a0e2;
+}
+
+.timeline-horizontal .content .item a .icon-timeline{
+  position: relative;
+  margin: auto;
+  text-align: center;
+  font-size: 22px;
+  border-radius: inherit;
+}

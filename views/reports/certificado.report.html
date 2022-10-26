@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            line-height: 1.4em;
+        }
+
+        .container{
+            margin: 15px;
+        }
+
+        .footer-pdf{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .flex{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: end;
+            text-align: justify;
+        }
+
+        .text{
+            text-align-last: center;
+        }
+
+        .title{
+            text-align: center;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            font-size: 22px;
+        }        
+
+        .subtitle{
+            font-weight: bold;
+        }
+
+        .bold{
+            font-weight: bold !important;
+        }
+        .d-block{
+            display: block !important;
+        }
+        .mt-1{
+            margin-top: 1em;
+        }
+
+        h1{color: darkBlue; text-align: center}
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        .border-tabla td, th{
+          padding: 4px 5px;
+          border: 1px solid #000;
+          height: 1em;
+          text-align: left;
+        }
+
+        .img-logo{
+          width: 180px;
+          height: 60px;
+          object-fit: fill;
+          object-position: center center;
+        }
+        .img-min-salud{
+          width: 80%;
+          height: 60px;
+          object-fit: fill;
+          object-position: center center;
+          margin-bottom: 0;
+          margin-top: 1em;
+        }
+      </style>
+</head>
+<body>
+
+    <div class='container'>
+        <!-- Cabecera -->
+        <table>
+            <colgroup>
+                <col style='width: 45%; text-align: center;'>
+                <col style='width: 10%'>
+                <col style='width: 45%'>
+            </colgroup>
+    
+            <thead >
+                <tr>
+                    <td><img class='img-logo' src='../images/logo_famisalud_flat.png'></td>
+                    <td></td>
+                    <td><img class='img-min-salud' src='../images/salud_ambiental.png' alt=''></td>
+                </tr>
+            </thead>
+            <tbody >
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <table class='border-tabla'>
+                            <colgroup>
+                                <col style='width: 80px;'>
+                                <col style='width: 80px;'>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td class='bold'>CÓDIGO</td>
+                                    <td>Id</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Titulo -->
+        <h2 class='title'>Certificado de Aptitud Médico Ocupacional</h2>
+        
+        <!-- Parte 1 -->
+        <h4 class='subtitle'>CERTIFICA que el Sr.(a):</h4>
+        <table class='border-tabla'>
+            <tbody>
+                <tr>
+                    <td colspan='4' style='width: 30%;' class='subtitle'>Nombre y Apellidos:</td>
+                    <td colspan='7' style='width: 50%;'></td>
+                    <td class='subtitle'>H.C</td>
+                    <td>011</td>
+                </tr>
+                <tr>
+                    <td class='subtitle'>DNI:</td>
+                    <td>14252525</td>
+                    <td class='subtitle'>PASAPORTE:</td>
+                    <td>x</td>
+                    <td colspan='2' class='subtitle'>Carnet de Extranjería:</td>
+                    <td></td>
+                    <td class='subtitle'>N°</td>
+                    <td>5522</td>
+                    <td class='subtitle'>EDAD:</td>
+                    <td>22</td>
+                    <td class='subtitle'>Genero:</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td colspan='5'  class='subtitle'>Empresa:</td>
+                    <td colspan='8'></td>
+                </tr>
+                <tr>
+                    <td colspan='5' class='subtitle'>Puesto al que consulta (solo ocupacional);</td>
+                    <td colspan='8'></td>
+                </tr>
+                <tr>
+                    <td colspan='5' class='subtitle'>Ocupación actual o ultima ocupación:</td>
+                    <td colspan='8'></td>
+                </tr>
+                <tr>
+                    <td colspan='5' class='subtitle'>RAM</td>
+                    <td colspan='8'></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Parte 2 -->
+        <table class='border-tabla mt-1'>
+            <thead>
+                <tr>
+                    <th style='text-align: left;'>Conclusiones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style='height: 50px;'></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Parte 3 -->
+        <table class='border-tabla mt-1'>
+            <colgroup>
+                <col style='width: 35%;'>
+                <col style='width: 10%;'>
+                <col style='width: 55%;'>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong class='d-block'>Apto</strong>
+                        <span>Para el</span>
+                    </td>
+                    <td style='text-align: center;'><strong>X</strong></td>
+                    <td>
+                        <strong class='d-block'>Restricciones</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>                        
+                        <strong class='d-block'>APTO CON RESTRICCIÓN</strong>
+                        <span>Appp</span>
+                    </td>
+                    <td></td>
+                    <td rowspan='2'></td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong class='d-block'>NO APTO</strong>
+                        <span>Para el</span>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Parte 4 -->
+        <table class='border-tabla mt-1'>
+            <thead>
+                <tr>
+                    <th>
+                        Recomendaciones y/o Restricciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style='height: 45px;'>
+                        title
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Fecha -->
+        <div style='margin-top: 1em;'>
+            <span>Fecha:</span>
+            <span>2022/05/25</span>
+        </div>
+
+        <!-- Firma -->
+        <table style='margin-top: 2em;'>
+            <colgroup>
+                <col style='width: 30%;'>
+                <col style='width: 40%;'>
+                <col style='width: 15px;'>
+                <col style='width: 15%;'>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <img src='../images/firma.gif' alt=''>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td style='border-top: 1px solid black; padding-top: 3px; text-align: center;'>
+                        <span class='d-block'>Nombre, Sello y Firma</span>
+                        <span>Médico que CERIFICA</span>
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Información -->
+        <div style='margin-top: 2.5em; text-align: center;'>
+            <p >
+              Calle 28 de Julio N° 397 Chincha Alta - Costado del Local Telefónica
+            </p>
+            <small>www.famisalud.com.pe</small>
+        </div>
+    </div>
+</body>
+</html>

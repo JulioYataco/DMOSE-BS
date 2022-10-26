@@ -1,0 +1,41 @@
+.container-login{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(48deg, #108080c7, #055bb7, #108080c7);
+}
+
+.content-login{
+  width: 400px;
+  height: auto;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .content-login{
+    margin: 0.5rem !important;
+  }
+  
+  .title-login{
+    font-size: 20px;
+  }
+}
+
+.absolute-left{
+  position: absolute;
+  left: 0;
+  z-index: 100;
+}
+.absolute-right{
+  position: absolute;
+  right: 0;
+  z-index: 100;
+}
+
+.text-indent-2{
+  text-indent: 22px;
+}
+
