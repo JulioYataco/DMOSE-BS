@@ -11,51 +11,53 @@
     <form autocomplete="off" id="formSubservice">
       <div class="row">
         <div class="col-md-12 form-group">
-          <label for="subservice">Nombre <span>SubServicio</span>:</label>
-          <input type="text" id="subservice" class="form-control form-control-border" maxlength="25" placeholder="">
+          <label for="txtSubservice">Nombre <span>SubServicio</span>:</label>
+          <input type="text" id="txtSubservice" class="form-control form-control-border" maxlength="25" placeholder="">
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-6 form-group">
-          <label for="type"><span>Tipo</span>:</label>
-          <select id="type" class="custom-select form-control-border">
+          <label for="txtTipo"><span>Tipo</span>:</label>
+          <select id="txtTipo" class="custom-select form-control-border">
             <option value="">Selecione</option>
+            <option value="AN">Análisis</option>
+            <option value="FM">Ficha Médica</option>
           </select>
         </div>
         <div class="col-md-6 form-group">
-          <label for="specialty"><span>Especialidad</span>:</label>
-          <select id="specialty" class="custom-select form-control-border">
-            <option value="">Selecione</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6 form-group">
-          <label for="area"><span>Área</span>:</label>
-          <select id="area" class="custom-select form-control-border" disabled>
-            <option value="">Selecione</option>
-          </select>
-        </div>
-        <div class="col-md-6 form-group">
-          <label for="method"><span>Método</span>:</label>
-          <select id="method" class="custom-select form-control-border" disabled>
-            <option value="">Selecione</option>
+          <label for="txtEspecialidad"><span>Especialidad</span>:</label>
+          <select id="txtEspecialidad" class="custom-select form-control-border">
+            <!-- Asincrona -->
           </select>
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-6 form-group">
-          <label for="sample"><span>Muestra</span>:</label>
-          <select id="sample" class="custom-select form-control-border" disabled>
-            <option value="">Selecione</option>
+          <label for="txtArea"><span>Área</span>:</label>
+          <select id="txtArea" class="custom-select form-control-border">
+            <!-- Asincrona -->
           </select>
         </div>
         <div class="col-md-6 form-group">
-          <label for="medicalrecord"><span>Ficha Médica</span>:</label>
-          <select id="medicalrecord" class="custom-select form-control-border">
+          <label for="txtMetodo"><span>Método</span>:</label>
+          <select id="txtMetodo" class="custom-select form-control-border">
+            <!-- Asincrona -->
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="txtMuestra"><span>Muestra</span>:</label>
+          <select id="txtMuestra" class="custom-select form-control-border"><!-- disabled -->
+            <!-- Asincrona -->
+          </select>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="txtFichaMedica"><span>Ficha Médica</span>:</label>
+          <select id="txtFichaMedica" class="custom-select form-control-border">
             <option value="">Selecione</option>
           </select>
         </div>
@@ -81,7 +83,7 @@
   </div>
   <div class="card-body">
     <!-- tabla subservicios -->
-    <table id="tableSunservicio" class="table table-responsive-md table-striped">
+    <table id="TablaSubservicio" class="table table-responsive-md table-striped">
       <thead>
         <tr>
           <th>ID</th>
@@ -93,20 +95,8 @@
           <th>OPERACIÓN</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>INMUNOLOGÍA</td>
-          <td>Usuario 1</td>
-          <td>2022/01/5</td>
-          <td>Usuario 2</td>
-          <td>2022/01/25</td>
-          <td>
-            <button type="button" class="btn btn-outline-warning"><i class="far fa-list-alt"></i></button>
-            <button type="button" class="btn btn-outline-info"><i class="fas fa-edit mr-1"></i></button>
-            <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash-alt mr-1"></i></button>
-          </td>
-        </tr>
+      <tbody id="Subservicio">
+        <!-- Asincrona -->
       </tbody>
     </table>
   </div>

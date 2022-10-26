@@ -275,6 +275,14 @@ $(document).ready(function () {
         });
     });
 
+    $("#Servicio").on("click", ".btnIrSubServicio", function () {
+
+        idservicio = $(this).attr('data-idservicio');
+        //console.log(idservicio);
+
+        
+    });
+
     //Modificar
     $("#modalBtnModificar").click(function () {
 

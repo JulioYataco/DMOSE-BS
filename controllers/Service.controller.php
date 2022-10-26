@@ -35,6 +35,9 @@ if(isset($_GET['operacion'])){
                             <button data-idservicio='{$registro->idservicio}' type='button' class='btn btn-sm btn-danger btnEliminarServicio'>
                                 <i class='fas fa-trash-alt'></i>
                             </button>
+                            <button data-idservicio='{$registro->idservicio}' type='button' class='btn btn-sm btn-primary btnIrSubServicio'>
+                                <i class='fas fa-solid fa-clipboard'></i>
+                            </button>
                         </td>
                     </tr>
                 ";
