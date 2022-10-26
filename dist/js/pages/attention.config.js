@@ -93,7 +93,7 @@ $(document).ready(function () {
                     console.log(e);
                     if (e == "") {
                         listSpecialty();
-                        alert("Se elimino correctamente");
+                        sweetAlertSuccess("Se elimino correctamente");
                     }
                 }
             });
@@ -170,24 +170,24 @@ $(document).ready(function () {
             'nomtipoexamen': nomtipoexamen
         };
 
-        if (confirm("¿Estas seguro de modificar este tipo de examen?")) {
-
-            $.ajax({
-                url: 'controllers/Examtype.controller.php',
-                type: 'GET',
-                data: datos,
-                success: function (e) {
-                    //console.log(e);
-                    listExamType();
-                    $("#modalAttentionConfig").modal('hide');
-                    sweetAlertSuccess("Se a modificado Correctamente");
-                }
-
-            });
-        }
+        sweetAlertConfirmQuestionSave("¿Estas seguro de modificar este tipo de examen?").then(confirm => {
+            if (confirm.isConfirmed) {
+                $.ajax({
+                    url: 'controllers/Examtype.controller.php',
+                    type: 'GET',
+                    data: datos,
+                    success: function (e) {
+                        //console.log(e);
+                        listExamType();
+                        $("#modalAttentionConfig").modal('hide');
+                        sweetAlertSuccess("Se a modificado Correctamente");
+                    }
+                });
+            }
+        });
     });
 
-    //Eliminar un tipo de red social
+    //Eliminar tipo de examen
     $("#TipoExamen").on("click", ".btnEliminarTipoExamen", function () {
 
         //Capturamos el id
@@ -208,12 +208,12 @@ $(document).ready(function () {
                     console.log(e);
                     if (e == "") {
                         listExamType();
-                        alert("Se elimino correctamente");
+                        sweetAlertSuccess("Se elimino correctamente");
                     }
                 }
             });
         }
-    })
+    });
 
     //Boton que ejecuta la funcion registrar tipo de examen
     $("#modalBtnGuardar").click(function () {
@@ -286,22 +286,21 @@ $(document).ready(function () {
             'servicio': servicio
         };
 
-        if (confirm("¿Estas seguro de modificar este servicio?")) {
-
-            $.ajax({
-                url: 'controllers/Service.controller.php',
-                type: 'GET',
-                data: datos,
-                success: function (e) {
-                    //console.log(e);
-
-                    listService();
-                    alert("Se a modificado Correctamente");
-                    $("#modalAttentionConfig").modal('hide');
-                }
-
-            });
-        }
+        sweetAlertConfirmQuestionSave("¿Estas seguro de modificar este servicio?").then(confirm => {
+            if (confirm.isConfirmed) {
+                $.ajax({
+                    url: 'controllers/Service.controller.php',
+                    type: 'GET',
+                    data: datos,
+                    success: function (e) {
+                        //console.log(e);
+                        listService();
+                        sweetAlertSuccess("Se a modificado Correctamente");
+                        $("#modalAttentionConfig").modal('hide');
+                    }
+                });
+            }
+        });
     });
 
     //Eliminar

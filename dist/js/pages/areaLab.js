@@ -121,22 +121,21 @@
         'nombrearea'        : nombrearea
         };
     
-        if(confirm("¿Estas seguro de modificar esta area?")){
-    
-            $.ajax({
-                url: 'controllers/LaboratoryArea.controller.php',
-                type: 'GET',
-                data: datos,
-                success: function(e){
-                console.log(e);
-    
-                listLaboratoryArea();
-                alert("Se a modificado Correctamente");
-                $("#modalLaboratorioConfig").modal('hide');
-                }
-            
-            });
-        }
+        sweetAlertConfirmQuestionSave("¿Estas seguro de modificar esta area?").then(confirm => {
+            if (confirm.isConfirmed) {
+                $.ajax({
+                    url: 'controllers/LaboratoryArea.controller.php',
+                    type: 'GET',
+                    data: datos,
+                    success: function(e){
+                    console.log(e);
+                    sweetAlertSuccess("Se a modificado Correctamente");
+                    $("#modalLaboratorioConfig").modal('hide');
+                    listLaboratoryArea();
+                    }
+                });
+            }
+        });
     }
 
     listLaboratoryArea();

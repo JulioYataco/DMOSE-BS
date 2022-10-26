@@ -60,21 +60,22 @@ $(document).ready(function (){
         'idarealaboratorio' : idarealaboratorio
         };
 
-        if(confirm("¿Estas seguro de eliminar esta área?")){
-
-            $.ajax({
-                url: 'controllers/LaboratoryArea.controller.php',
-                type: 'GET',
-                data: datos,
-                success: function(e){
-                    console.log(e);
-                    if(e == ""){
-                        listLaboratoryArea();
-                        alert("Se elimino correctamente");
+        sweetAlertConfirmQuestionSave("¿Estas seguro de eliminar esta área?").then(confirm => {
+            if (confirm.isConfirmed) {
+                $.ajax({
+                    url: 'controllers/LaboratoryArea.controller.php',
+                    type: 'GET',
+                    data: datos,
+                    success: function(e){
+                        //console.log(e);
+                        if(e == ""){
+                            listLaboratoryArea();
+                            sweetAlertSuccess("Se elimino correctamente");
+                        }
                     }
-                }
-            });
-        }
+                });
+            }
+        });
     });
 
     //Boton que ejecuta la funcion registrar AREA
@@ -101,12 +102,8 @@ $(document).ready(function (){
         $("#titulomodal").html('Area');
         $("#subtitulomodal").html('Area');
         
-    })
+    });
     
-
-
-
-
     /**
    * ==============================================================
    *                PARA METODO LABORATORIO
@@ -147,24 +144,24 @@ $(document).ready(function (){
         'nombrearea'        : nombrearea
         };
 
-        if(confirm("¿Estas seguro de modificar este método?")){
-
-            $.ajax({
-                url: 'controllers/LaboratoryArea.controller.php',
-                type: 'GET',
-                data: datos,
-                success: function(e){
-                    //console.log(e);
-                    listMethodLab();
-                    alert("Se a modificado Correctamente");
-                    $("#modalLaboratorioConfig").modal('hide');
-                }
-            
-            });
-        }
+        sweetAlertConfirmQuestionSave("¿Estas seguro de modificar este método?").then(confirm => {
+            if (confirm.isConfirmed) {
+                $.ajax({
+                    url: 'controllers/LaboratoryArea.controller.php',
+                    type: 'GET',
+                    data: datos,
+                    success: function(e){
+                        //console.log(e);
+                        listMethodLab();
+                        sweetAlertSuccess("Se a modificado Correctamente");
+                        $("#modalLaboratorioConfig").modal('hide');
+                    }
+                });
+            }
+        });
     });
 
-    //Eliminar un tipo de red social
+    //Eliminar metodo
     $("#MetodoLaboratorio").on("click", ".btnEliminarMetodoLaboratorio", function(){
 
         //Capturamos el id
@@ -175,23 +172,23 @@ $(document).ready(function (){
         'idarealaboratorio' : idarealaboratorio
         };
 
-        if(confirm("¿Estas seguro de eliminar este método?")){
-
-            $.ajax({
-                url: 'controllers/LaboratoryArea.controller.php',
-                type: 'GET',
-                data: datos,
-                success: function(e){
-                    console.log(e);
-                    if(e == ""){
-                        listMethodLab();
-                        alert("Se elimino correctamente");
+        sweetAlertConfirmQuestionSave("¿Estas seguro de eliminar este método?").then(confirm => {
+            if (confirm.isConfirmed) {
+                $.ajax({
+                    url: 'controllers/LaboratoryArea.controller.php',
+                    type: 'GET',
+                    data: datos,
+                    success: function(e){
+                        console.log(e);
+                        if(e == ""){
+                            listMethodLab();
+                            sweetAlertSuccess("Se elimino correctamente");
+                        }
                     }
-                }
-            });
-        }
+                });
+            }
+        });        
     });
-
 
     //Boton que ejecuta la funcion registrar METODO
     $("#btnRegistrarLab").click(function (){
@@ -209,7 +206,7 @@ $(document).ready(function (){
         //Cambiar titulo y subtitulo
         $("#titulomodal").html('Método');
         $("#subtitulomodal").html('Método');
-    })
+    });
 
     /**
    * ==============================================================
@@ -240,7 +237,7 @@ $(document).ready(function (){
         });   
     });
 
-    //Modificar
+    //Modificar muestra
     $("#btnModificarLab").click(function(){
 
         nombrearea = $("#txtNomLab").val();
@@ -250,25 +247,25 @@ $(document).ready(function (){
         'idarealaboratorio' : idarealaboratorio,
         'nombrearea'        : nombrearea
         };
-
-        if(confirm("¿Estas seguro de modificar esta muestra?")){
-
-            $.ajax({
-                url: 'controllers/LaboratoryArea.controller.php',
-                type: 'GET',
-                data: datos,
-                success: function(e){
-                    //console.log(e);
-                    listSampleLab();
-                    alert("Se a modificado Correctamente");
-                    $("#modalLaboratorioConfig").modal('hide');
-                }
-            
-            });
-        }
+        
+        sweetAlertConfirmQuestionSave("¿Estas seguro de modificar esta muestra?").then(confirm => {
+            if (confirm.isConfirmed) {
+                $.ajax({
+                    url: 'controllers/LaboratoryArea.controller.php',
+                    type: 'GET',
+                    data: datos,
+                    success: function(e){
+                        //console.log(e);
+                        listSampleLab();
+                        sweetAlertSuccess("Se a modificado Correctamente");
+                        $("#modalLaboratorioConfig").modal('hide');
+                    }
+                });
+            }
+        });
     });
 
-    //Eliminar
+    //Eliminar muestra
     $("#MuestraLaboratorio").on("click", ".btnEliminarMuestraLaboratorio", function(){
 
         //Capturamos el id
@@ -279,23 +276,23 @@ $(document).ready(function (){
         'idarealaboratorio' : idarealaboratorio
         };
 
-        if(confirm("¿Estas seguro de eliminar esta muestra?")){
-
-            $.ajax({
-                url: 'controllers/LaboratoryArea.controller.php',
-                type: 'GET',
-                data: datos,
-                success: function(e){
-                    console.log(e);
-                    if(e == ""){
-                        listSampleLab();
-                        alert("Se elimino correctamente");
+        sweetAlertConfirmQuestionSave("¿Estas seguro de eliminar esta muestra?").then(confirm => {
+            if (confirm.isConfirmed) {
+                $.ajax({
+                    url: 'controllers/LaboratoryArea.controller.php',
+                    type: 'GET',
+                    data: datos,
+                    success: function(e){
+                        console.log(e);
+                        if(e == ""){
+                            listSampleLab();
+                            sweetAlertSuccess("Se elimino correctamente");
+                        }
                     }
-                }
-            });
-        }
-    })
-
+                });
+            }
+        });
+    });
 
     //Boton que ejecuta la funcion registrar MUESTRA
     $("#btnRegistrarLab").click(function (){
@@ -313,7 +310,6 @@ $(document).ready(function (){
         //Cambiar titulo y subtitulo
         $("#titulomodal").html('Muestra');
         $("#subtitulomodal").html('Muestra');
-    })
-
+    });
 
 });
