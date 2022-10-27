@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.1.6 (64 bit)
-MySQL - 10.4.24-MariaDB : Database - ocupacional
+SQLyog Professional v12.5.1 (64 bit)
+MySQL - 10.4.17-MariaDB : Database - ocupacional
 *********************************************************************
 */
 
@@ -34,21 +34,22 @@ CREATE TABLE `areaslaboratorios` (
   KEY `fk_arl_idusuariomod` (`idusuariomod`),
   CONSTRAINT `fk_arl_idusuariocre` FOREIGN KEY (`idusuariocre`) REFERENCES `usuarios` (`idusuario`),
   CONSTRAINT `fk_arl_idusuariomod` FOREIGN KEY (`idusuariomod`) REFERENCES `usuarios` (`idusuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `areaslaboratorios` */
 
 insert  into `areaslaboratorios`(`idarealaboratorio`,`tipo`,`nombrearea`,`idusuariocre`,`fechahoracre`,`idusuariomod`,`fechahoramod`,`estado`) values 
-(1,'AR','Bacteriologia',1,'2022-10-18 23:07:19',NULL,NULL,''),
+(1,'AR','Bacteriología',1,'2022-10-18 23:07:19',3,'2022-10-26 12:28:09',''),
 (2,'ME','Eclia',1,'2022-10-18 23:07:19',NULL,NULL,''),
-(3,'MU','Muestra Nueva 1',1,'2022-10-18 23:07:19',NULL,NULL,''),
-(4,'AR','dDA',3,'2022-10-25 16:59:42',3,'2022-10-25 17:59:27',''),
+(3,'MU','Muestra Nueva',1,'2022-10-18 23:07:19',3,'2022-10-26 12:28:59',''),
+(4,'AR','DAS',3,'2022-10-25 16:59:42',3,'2022-10-27 00:11:23',''),
 (5,'AR','XD',3,'2022-10-25 16:59:52',NULL,NULL,'\0'),
-(6,'ME','metodo',3,'2022-10-25 17:00:05',NULL,NULL,''),
-(7,'MU','muestra',3,'2022-10-25 17:00:22',3,'2022-10-25 17:42:16',''),
+(6,'ME','método2',3,'2022-10-25 17:00:05',3,'2022-10-26 12:15:25',''),
+(7,'MU','muestra 1',3,'2022-10-25 17:00:22',3,'2022-10-26 12:29:06',''),
 (8,'AR','ja',3,'2022-10-25 17:00:40',NULL,NULL,'\0'),
 (9,'ME','je',3,'2022-10-25 17:00:49',NULL,NULL,'\0'),
-(10,'MU','ji',3,'2022-10-25 17:00:58',NULL,NULL,'\0');
+(10,'MU','ji',3,'2022-10-25 17:00:58',NULL,NULL,'\0'),
+(11,'ME','método',3,'2022-10-27 00:10:31',NULL,NULL,'');
 
 /*Table structure for table `componentes` */
 
@@ -57,28 +58,23 @@ DROP TABLE IF EXISTS `componentes`;
 CREATE TABLE `componentes` (
   `idcomponente` int(11) NOT NULL AUTO_INCREMENT,
   `idsubservicio` int(11) NOT NULL,
-  `idunidadmedida` int(11) DEFAULT NULL,
+  `idunidadmedida` int(11) NOT NULL,
   `componente` varchar(50) NOT NULL,
   `valornormal` text DEFAULT NULL,
-  `orden` tinyint(4) DEFAULT NULL,
   `idusuariocre` int(11) NOT NULL,
   `fechahoracre` datetime NOT NULL DEFAULT current_timestamp(),
   `idusuariomod` int(11) DEFAULT NULL,
   `fechahoramod` datetime DEFAULT NULL,
-  `idusuariobaja` int(11) DEFAULT NULL,
-  `fechabaja` datetime DEFAULT NULL,
   `estado` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`idcomponente`),
-  KEY `fk_cmp_idsubservicio` (`idsubservicio`),
-  KEY `fk_cmp_idunidadmedida` (`idunidadmedida`),
-  KEY `fk_cmp_idusuariocre` (`idusuariocre`),
-  KEY `fk_cmp_idusuariomod` (`idusuariomod`),
-  KEY `fk_cmp_idusuariobaja` (`idusuariobaja`),
-  CONSTRAINT `fk_cmp_idsubservicio` FOREIGN KEY (`idsubservicio`) REFERENCES `subservicios` (`idsubservicio`),
-  CONSTRAINT `fk_cmp_idunidadmedida` FOREIGN KEY (`idunidadmedida`) REFERENCES `unidadmedidas` (`idunidadmedida`),
-  CONSTRAINT `fk_cmp_idusuariobaja` FOREIGN KEY (`idusuariobaja`) REFERENCES `usuarios` (`idusuario`),
-  CONSTRAINT `fk_cmp_idusuariocre` FOREIGN KEY (`idusuariocre`) REFERENCES `usuarios` (`idusuario`),
-  CONSTRAINT `fk_cmp_idusuariomod` FOREIGN KEY (`idusuariomod`) REFERENCES `usuarios` (`idusuario`)
+  KEY `fk_com_idsubservicio` (`idsubservicio`),
+  KEY `fk_com_idunidadmedida` (`idunidadmedida`),
+  KEY `fk_com_idusuariocre` (`idusuariocre`),
+  KEY `fk_com_idusuariomod` (`idusuariomod`),
+  CONSTRAINT `fk_com_idsubservicio` FOREIGN KEY (`idsubservicio`) REFERENCES `subservicios` (`idsubservicio`),
+  CONSTRAINT `fk_com_idunidadmedida` FOREIGN KEY (`idunidadmedida`) REFERENCES `unidadmedidas` (`idunidadmedida`),
+  CONSTRAINT `fk_com_idusuariocre` FOREIGN KEY (`idusuariocre`) REFERENCES `usuarios` (`idusuario`),
+  CONSTRAINT `fk_com_idusuariomod` FOREIGN KEY (`idusuariomod`) REFERENCES `usuarios` (`idusuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `componentes` */
@@ -121,7 +117,7 @@ CREATE TABLE `empresas` (
   `correo` varchar(100) NOT NULL,
   `direccion` varchar(100) DEFAULT NULL,
   `ubigeo` char(6) DEFAULT NULL,
-  `diascredito` tinyint(4) DEFAULT NULL,
+  `acteconomica` tinytext DEFAULT NULL,
   `idusuariocre` int(11) DEFAULT NULL,
   `idusuariomod` int(11) DEFAULT NULL,
   `idusuariobaja` int(11) DEFAULT NULL,
@@ -140,7 +136,7 @@ CREATE TABLE `empresas` (
 
 /*Data for the table `empresas` */
 
-insert  into `empresas`(`idempresa`,`empresa`,`razonsocial`,`ruc`,`correo`,`direccion`,`ubigeo`,`diascredito`,`idusuariocre`,`idusuariomod`,`idusuariobaja`,`fechahoracre`,`fechahoramod`,`fechahorabaja`,`estado`) values 
+insert  into `empresas`(`idempresa`,`empresa`,`razonsocial`,`ruc`,`correo`,`direccion`,`ubigeo`,`acteconomica`,`idusuariocre`,`idusuariomod`,`idusuariobaja`,`fechahoracre`,`fechahoramod`,`fechahorabaja`,`estado`) values 
 (1,'Peve bendezu','Transportes Lino S.A.C','20145789632','software@gmail.com','Av. 28 de julio #397','100205',NULL,NULL,NULL,NULL,'2022-10-13 14:17:43',NULL,NULL,''),
 (2,'Jhon Francia','IOT','20236902851','jfranciaIOT@gmail.com','Av.Progreso #202','100204',NULL,NULL,NULL,NULL,'2022-10-13 14:17:43',NULL,NULL,''),
 (3,'julio','ki','20154448484','ju@gmail.com','asdas','100205',NULL,1,NULL,NULL,'2022-10-25 15:23:02',NULL,NULL,'');
@@ -168,7 +164,7 @@ CREATE TABLE `especialidades` (
 
 insert  into `especialidades`(`idespecialidad`,`especialidad`,`idusuariocre`,`fechahoracre`,`idusuariomod`,`fechahoramod`,`estado`) values 
 (1,'Oftalmología',1,'2022-10-15 07:42:29',NULL,NULL,'1'),
-(2,'Psicología',1,'2022-10-15 07:42:29',3,'2022-10-24 14:40:27','1'),
+(2,'Psicología1',1,'2022-10-15 07:42:29',3,'2022-10-26 11:57:11','0'),
 (3,'Audiometría1',3,'2022-10-15 08:32:22',3,'2022-10-15 08:37:18','0'),
 (4,'S',3,'2022-10-25 18:27:30',NULL,NULL,'0');
 
@@ -179,23 +175,15 @@ DROP TABLE IF EXISTS `fichasmedicas`;
 CREATE TABLE `fichasmedicas` (
   `idfichamedica` int(11) NOT NULL AUTO_INCREMENT,
   `nomfichamedica` varchar(70) NOT NULL,
-  `idusuariocre` int(11) NOT NULL,
-  `idusuariomod` int(11) DEFAULT NULL,
-  `fechahoracre` datetime NOT NULL DEFAULT current_timestamp(),
-  `fechahoramod` datetime DEFAULT NULL,
   `estado` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`idfichamedica`),
-  UNIQUE KEY `uk_fcm_nomfichamedica` (`nomfichamedica`),
-  KEY `fk_fcm_idusuariocre` (`idusuariocre`),
-  KEY `fk_fcm_idusuariomod` (`idusuariomod`),
-  CONSTRAINT `fk_fcm_idusuariocre` FOREIGN KEY (`idusuariocre`) REFERENCES `usuarios` (`idusuario`),
-  CONSTRAINT `fk_fcm_idusuariomod` FOREIGN KEY (`idusuariomod`) REFERENCES `usuarios` (`idusuario`)
+  UNIQUE KEY `uk_fcm_nomfichamedica` (`nomfichamedica`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `fichasmedicas` */
 
-insert  into `fichasmedicas`(`idfichamedica`,`nomfichamedica`,`idusuariocre`,`idusuariomod`,`fechahoracre`,`fechahoramod`,`estado`) values 
-(1,'Audiometria',1,NULL,'2022-10-18 23:09:12',NULL,'');
+insert  into `fichasmedicas`(`idfichamedica`,`nomfichamedica`,`estado`) values 
+(1,'Audiometria','');
 
 /*Table structure for table `medicos` */
 
@@ -420,10 +408,14 @@ DROP TABLE IF EXISTS `subservicios`;
 
 CREATE TABLE `subservicios` (
   `idsubservicio` int(11) NOT NULL AUTO_INCREMENT,
+  `idservicio` int(11) NOT NULL,
   `nomsubservicio` varchar(70) NOT NULL,
   `tipo` char(2) NOT NULL,
-  `idarealaboratorio` int(11) DEFAULT NULL,
   `idespecialidad` int(11) NOT NULL,
+  `idarea` int(11) DEFAULT NULL,
+  `idmetodo` int(11) DEFAULT NULL,
+  `idmuestra` int(11) DEFAULT NULL,
+  `idfichamedica` int(11) DEFAULT NULL,
   `idusuariocre` int(11) NOT NULL,
   `fechahoracre` datetime NOT NULL DEFAULT current_timestamp(),
   `idusuariomod` int(11) DEFAULT NULL,
@@ -431,19 +423,31 @@ CREATE TABLE `subservicios` (
   `idusuariobaja` int(11) DEFAULT NULL,
   `fechabaja` datetime DEFAULT NULL,
   `estado` bit(1) NOT NULL DEFAULT b'1',
-  `idfichamedica` int(11) DEFAULT NULL,
   PRIMARY KEY (`idsubservicio`),
+  KEY `fk_sbs_idservicio` (`idservicio`),
+  KEY `fk_sbs_idarea` (`idarea`),
+  KEY `fk_sbs_idmetodo` (`idmetodo`),
+  KEY `fk_sbs_idmuestra` (`idmuestra`),
+  KEY `fk_sbs_idespecialidad` (`idespecialidad`),
   KEY `fk_sbs_idusuariocre` (`idusuariocre`),
   KEY `fk_sbs_idusuariomod` (`idusuariomod`),
   KEY `fk_sbs_idusuariobaja` (`idusuariobaja`),
-  KEY `fk_sbs_idfichamedica` (`idfichamedica`),
-  CONSTRAINT `fk_sbs_idfichamedica` FOREIGN KEY (`idfichamedica`) REFERENCES `fichasmedicas` (`idfichamedica`),
+  CONSTRAINT `fk_sbs_idarea` FOREIGN KEY (`idarea`) REFERENCES `areaslaboratorios` (`idarealaboratorio`),
+  CONSTRAINT `fk_sbs_idespecialidad` FOREIGN KEY (`idespecialidad`) REFERENCES `especialidades` (`idespecialidad`),
+  CONSTRAINT `fk_sbs_idmetodo` FOREIGN KEY (`idmetodo`) REFERENCES `areaslaboratorios` (`idarealaboratorio`),
+  CONSTRAINT `fk_sbs_idmuestra` FOREIGN KEY (`idmuestra`) REFERENCES `areaslaboratorios` (`idarealaboratorio`),
+  CONSTRAINT `fk_sbs_idservicio` FOREIGN KEY (`idservicio`) REFERENCES `servicios` (`idservicio`),
   CONSTRAINT `fk_sbs_idusuariobaja` FOREIGN KEY (`idusuariobaja`) REFERENCES `usuarios` (`idusuario`),
   CONSTRAINT `fk_sbs_idusuariocre` FOREIGN KEY (`idusuariocre`) REFERENCES `usuarios` (`idusuario`),
   CONSTRAINT `fk_sbs_idusuariomod` FOREIGN KEY (`idusuariomod`) REFERENCES `usuarios` (`idusuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `subservicios` */
+
+insert  into `subservicios`(`idsubservicio`,`idservicio`,`nomsubservicio`,`tipo`,`idespecialidad`,`idarea`,`idmetodo`,`idmuestra`,`idfichamedica`,`idusuariocre`,`fechahoracre`,`idusuariomod`,`fechahoramod`,`idusuariobaja`,`fechabaja`,`estado`) values 
+(2,12,'BRICK','FM',1,NULL,NULL,NULL,1,3,'2022-10-27 01:53:35',NULL,NULL,NULL,NULL,''),
+(3,12,'BRICK2','AN',1,4,6,3,1,3,'2022-10-27 01:54:08',NULL,NULL,NULL,NULL,''),
+(4,12,'Orritonirangolía','AN',1,4,11,7,NULL,3,'2022-10-27 02:00:42',NULL,NULL,NULL,NULL,'');
 
 /*Table structure for table `tipoexamenes` */
 
@@ -2558,7 +2562,6 @@ BEGIN
 	IF _cantdependente = '' THEN SET _cantdependente = NULL; END IF;
 	IF _consentinformado = '' THEN SET _consentinformado = NULL; END IF;
 	IF _consetdrogas = '' THEN SET _consetdrogas = NULL; END IF;
-
 INSERT INTO EMPLEADOS (idpersona, idpuesto, idempresa, canthijos, cantdependente, seguro, gradoinstruccion, consentinformado, consetdrogas)
 		VALUES (_idpersona, _idpuesto, _idempresa, _canthijos, _cantdependente, _seguro, _gradoinstruccion, _consentinformado, _consetdrogas);
 END */$$
@@ -2604,11 +2607,12 @@ DELIMITER $$
 	IN _correo 				VARCHAR(100),
 	IN _direccion 		VARCHAR(100),
 	IN _ubigeo 				CHAR(6),
+	in _acteconomica  TINYTEXT,
 	IN _idusuariocre  INT 			
 )
 BEGIN
-	INSERT INTO EMPRESAS (empresa, razonsocial, ruc, correo, direccion, ubigeo, idusuariocre)
-		VALUES(_empresa, _razonsocial, _ruc, _correo, _direccion, _ubigeo, _idusuariocre);
+	INSERT INTO EMPRESAS (empresa, razonsocial, ruc, correo, direccion, ubigeo, acteconomica, idusuariocre)
+		VALUES(_empresa, _razonsocial, _ruc, _correo, _direccion, _ubigeo, _acteconomica, _idusuariocre);
 END */$$
 DELIMITER ;
 
@@ -2877,7 +2881,6 @@ BEGIN
 	IF _celular = '' THEN SET _celular = NULL; END IF;
 	IF _correo = '' THEN SET _correo = NULL; END IF;
 	IF _direccion = '' THEN SET _direccion = NULL; END IF;
-
 INSERT INTO PERSONAS (apepaterno, apematerno, nombres, fechanac, sexo, estcivil, tipodoc, numdoc, celular, correo, direccion, ubigeodirec, ubigeonac)
 		VALUES (_apepaterno, _apematerno, _nombres, _fechanac, _sexo, _estcivil, _tipodoc, _numdoc, _celular, _correo, _direccion, _ubigeodirec, _ubigeonac);
 		
@@ -2978,7 +2981,6 @@ DELIMITER $$
 BEGIN
 	IF _consinformado = '' THEN SET _consinformado = null; END IF;
 	IF _consdrogas = '' THEN SET _consdrogas = null; END IF;
-
 	
 INSERT INTO PROTOCOLOS (idempresa, idtipoexamen, protocolo, consinformado, consdrogas, idusuariocre)
 		VALUES (_idempresa, _idtipoexamen, _protocolo, _consinformado, _consdrogas, _idusuariocre);
@@ -3151,19 +3153,25 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spu_subservicio_registrar`(
+	in _idservicio				int,
 	IN _nomsubservicio 		VARCHAR(70),
 	IN _tipo 							CHAR(2),
-	IN _idarealaboratorio INT,
 	IN _idespecialidad 		INT,
-	IN _idusuariocre 			INT,
-	IN _idfichamedica 		INT
+	IN _idarea						INT,
+	IN _idmetodo					INT,
+	IN _idmuestra					INT,
+	IN _idfichamedica 		INT,
+	IN _idusuariocre 			INT
+	
 )
 BEGIN
+	IF _idarea = '' THEN SET _idarea = NULL; END IF;
+	IF _idmetodo = '' THEN SET _idmetodo = NULL; END IF;
+	IF _idmuestra = '' THEN SET _idmuestra = NULL; END IF;
 	IF _idfichamedica = '' THEN SET _idfichamedica = NULL; END IF;
-	IF _idarealaboratorio = '' THEN SET _idarealaboratorio = NULL; END IF;
 	
-	INSERT INTO SUBSERVICIOS (nomsubservicio, tipo, idarealaboratorio, idespecialidad, idusuariocre, idfichamedica) 
-		VALUES (_nomsubservicio, _tipo, _idarealaboratorio, _idespecialidad, _idusuariocre, _idfichamedica);
+	INSERT INTO SUBSERVICIOS (idservicio, nomsubservicio, tipo, idespecialidad, idarea, idmetodo, idmuestra, idfichamedica, idusuariocre) 
+		VALUES (_idservicio, _nomsubservicio, _tipo, _idespecialidad, _idarea, _idmetodo, _idmuestra, _idfichamedica, _idusuariocre);
 END */$$
 DELIMITER ;
 

@@ -25,13 +25,12 @@ if(isset($_GET['operacion'])){
                     <tr>
                         <td>{$registro->idsubservicio}</td>
                         <td>{$registro->nomsubservicio}</td>
-                        <td>{$registro->idarealaboratorio}</td>
+                        <td>{$registro->tipo}</td>
                         <td>{$registro->idespecialidad}</td>
-                        <td>{$registro->idarealaboratorio}</td>
-                        <td>{$registro->idusuariocre}</td>
-                        <td>{$registro->fechahoracre}</td>
-                        <td>{$registro->idusuariomod}</td>
-                        <td>{$registro->fechahoramod}</td>
+                        <td>{$registro->idarea}</td>
+                        <td>{$registro->idmetodo}</td>
+                        <td>{$registro->idmuestra}</td>
+                        <td>{$registro->idfichamedica}</td>
                         <td>
                             <button data-idsubservicio='{$registro->idsubservicio}' type='button' class='btn btn-sm btn-info btnEditarSubservicio'>
                                 <i class='fas fa-edit'></i>
@@ -139,12 +138,15 @@ if(isset($_GET['operacion'])){
     if($operacion == 'registerSubservice'){
 
         $datos = [
+            "idservicio"            => $_GET['idservicio'],
             "nomsubservicio"        => $_GET['nomsubservicio'],
             "tipo"                  => $_GET['tipo'],
-            "idarealaboratorio"     => $_GET['idarealaboratorio'],
             "idespecialidad"        => $_GET['idespecialidad'],
-            "idusuariocre"          => $_SESSION['idusuario'],
-            "idfichamedica"         => $_GET['idfichamedica']
+            "idarea"                => $_GET['idarea'],
+            "idmetodo"              => $_GET['idmetodo'],
+            "idmuestra"             => $_GET['idmuestra'],
+            "idfichamedica"         => $_GET['idfichamedica'],
+            "idusuariocre"          => $_SESSION['idusuario']
         ];
 
         $subservice->registerSubservice($datos);

@@ -174,24 +174,57 @@ CREATE TABLE DESCUENTOS
 	iddetservicio INT 		NOT NULL,
 	idcotizacion  INT 		NOT NULL,
 	descuento     CHAR(3) 		NULL,
-	estado     		CHAR(1) NOT NULL DEFAULT 'A',				
+	estado     		CHAR(1) NOT NULL DEFAULT 1,				
+)ENGINE = INNODB;
+
+CREATE TABLE FICHASMEDICAS
+(
+	idfichamedica			INT AUTO_INCREMENT PRIMARY KEY,
+	nomfichamedica    VARCHAR(70) NOT NULL,
+	estado     				CHAR(1) 		NOT NULL DEFAULT 1
 )ENGINE = INNODB;
 
 CREATE TABLE SUBSERVICIOS
 (
 	idsubservicio 	INT AUTO_INCREMENT PRIMARY KEY,
 	idservicio 			INT 				NOT NULL,
-	idarea					INT 				NOT NULL,
-	idmuestra				INT 				NOT NULL,
+	tipo						CHAR(2) 		NOT NULL, -- AN(Analisis) - FM(Ficha Médica)
+	nomsubservicio  VARCHAR(70)	NOT NULL,
 	idespecialidad 	INT 				NOT NULL,
-	tipo						VARCHAR(50) NOT NULL,
-	estado   				CHAR(1) 		NOT NULL DEFAULT 'A',
-	CONSTRAINT fk_sbs_idservicio FOREIGN KEY idservicio REFERENCES SERVICIOS (idservicio),
-	CONSTRAINT fk_sbs_idarea FOREIGN KEY idarea REFERENCES AREAS (idarea),
-	CONSTRAINT fk_sbs_idmuestra FOREIGN KEY idmuestra REFERENCES MUESTRAS (idmuestra),
-	CONSTRAINT fk_sbs_idespecialidad FOREIGN KEY idespecialidad REFERENCES ESPECIALIDADES (idespecialidad)
+	idarea					INT 						NULL,
+	idmetodo				INT 						NULL,
+	idmuestra				INT 						NULL,
+	idfichamedica		INT 						NULL,
+	idusuariocre		INT 				NOT NULL,
+	fechahoracre		DATETIME 		NOT NULL DEFAULT NOW(),
+	idusuariomod		INT 						NULL,
+	fechahoramod		DATETIME				NULL,
+	idusuariobaja 	INT 						NULL,
+	fechabaja				DATETIME 				NULL,
+	estado   				CHAR(1) 		NOT NULL DEFAULT 1,
+	CONSTRAINT fk_sbs_idservicio FOREIGN KEY (idservicio) REFERENCES SERVICIOS (idservicio),
+	CONSTRAINT fk_sbs_idarea FOREIGN KEY (idarea) REFERENCES AREASLABORATORIOS (idarealaboratorio),
+	CONSTRAINT fk_sbs_idmetodo FOREIGN KEY (idmetodo) REFERENCES AREASLABORATORIOS (idarealaboratorio),
+	CONSTRAINT fk_sbs_idmuestra FOREIGN KEY (idmuestra) REFERENCES AREASLABORATORIOS (idarealaboratorio),
+	CONSTRAINT fk_sbs_idespecialidad FOREIGN KEY (idespecialidad) REFERENCES ESPECIALIDADES (idespecialidad),
+	CONSTRAINT fk_srv_idusuariocre FOREIGN KEY (idusuariocre) REFERENCES USUARIOS (idusuario),
+	CONSTRAINT fk_srv_idusuariomod FOREIGN KEY (idusuariomod) REFERENCES USUARIOS (idusuario),
+	CONSTRAINT fk_srv_idusuariobaja FOREIGN KEY (idusuariobaja) REFERENCES USUARIOS (idusuario)
 )ENGINE = INNODB;
 
+
+CREATE TABLE COMPONENTES
+(
+	idcomponente 		INT AUTO_INCREMENT PRIMARY KEY,
+	idsubservicio		INT 				NOT NULL,
+	idvalornormal 	INT 				NOT NULL,
+	idunidadmedida 	INT 				NOT NULL,
+	componente			VARCHAR(50) NOT NULL,
+	estado   				CHAR(1) 		NOT NULL DEFAULT 'A',
+	CONSTRAINT fk_com_idsubservicio FOREIGN KEY (idsubservicio) REFERENCES SUBSERVICIOS (idsubservicio),
+	CONSTRAINT fk_com_idvalornormal FOREIGN KEY (idvalornormal) REFERENCES VALORESNORMALES (idvalornormal),
+	CONSTRAINT fk_com_idunidadmedida FOREIGN KEY (idunidadmedida) REFERENCES UNIDADMEDIDAS (idunidadmedida)
+)ENGINE = INNODB;
 
 
 CREATE TABLE ESPECIALIDADES
@@ -316,19 +349,6 @@ CREATE TABLE UNIDADMEDIDAS
 	abreviatura			VARCHAR(3) 			NULL
 )ENGINE = INNODB;
 
-
-CREATE TABLE COMPONENTES
-(
-	idcomponente 		INT AUTO_INCREMENT PRIMARY KEY,
-	idsubservicio		INT 				NOT NULL,
-	idvalornormal 	INT 				NOT NULL,
-	idunidadmedida 	INT 				NOT NULL,
-	componente			VARCHAR(50) NOT NULL,
-	estado   				CHAR(1) 		NOT NULL DEFAULT 'A',
-	CONSTRAINT fk_com_idsubservicio FOREIGN KEY (idsubservicio) REFERENCES SUBSERVICIOS (idsubservicio),
-	CONSTRAINT fk_com_idvalornormal FOREIGN KEY (idvalornormal) REFERENCES VALORESNORMALES (idvalornormal),
-	CONSTRAINT fk_com_idunidadmedida FOREIGN KEY (idunidadmedida) REFERENCES UNIDADMEDIDAS (idunidadmedida)
-)ENGINE = INNODB;
 
 
 CREATE TABLE RESULTADOS

@@ -36,13 +36,13 @@
       <div class="row">
         <div class="col-md-6 form-group">
           <label for="txtArea"><span>Área</span>:</label>
-          <select id="txtArea" class="custom-select form-control-border">
+          <select id="txtArea" class="custom-select form-control-border" disabled>
             <!-- Asincrona -->
           </select>
         </div>
         <div class="col-md-6 form-group">
           <label for="txtMetodo"><span>Método</span>:</label>
-          <select id="txtMetodo" class="custom-select form-control-border">
+          <select id="txtMetodo" class="custom-select form-control-border" disabled>
             <!-- Asincrona -->
           </select>
         </div>
@@ -51,14 +51,14 @@
       <div class="row">
         <div class="col-md-6 form-group">
           <label for="txtMuestra"><span>Muestra</span>:</label>
-          <select id="txtMuestra" class="custom-select form-control-border"><!-- disabled -->
+          <select id="txtMuestra" class="custom-select form-control-border" disabled><!-- disabled -->
             <!-- Asincrona -->
           </select>
         </div>
         <div class="col-md-6 form-group">
           <label for="txtFichaMedica"><span>Ficha Médica</span>:</label>
-          <select id="txtFichaMedica" class="custom-select form-control-border">
-            <option value="">Selecione</option>
+          <select id="txtFichaMedica" class="custom-select form-control-border" disabled>
+            <!-- Asincrona -->
           </select>
         </div>
       </div>
@@ -69,7 +69,7 @@
     <!-- Botones de opciones -->
     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-long-arrow-alt-left mr-1"></i> Cancelar</button>
     <button type="button" class="btn btn-info d-none"><i class="fas fa-redo-alt mr-1"></i> Actualizar</button>
-    <button type="button" class="btn btn-success"><i class="fas  mr-1 fa-save"></i> Guardar</button>
+    <button type="button" id="btnModalGuardarSubservicio" class="btn btn-success"><i class="fas  mr-1 fa-save"></i> Guardar</button>
   </div>
 </div>
 
@@ -83,15 +83,17 @@
   </div>
   <div class="card-body">
     <!-- tabla subservicios -->
-    <table id="TablaSubservicio" class="table table-responsive-md table-striped">
+    <table id="TablaSubservicio" class="table table-responsive-md table-striped table-responsive">
       <thead>
         <tr>
           <th>ID</th>
           <th>SUBSERVICIO</th>
-          <th>USUARIO CRE</th>
-          <th>FECHA CRE</th>
-          <th>USUARIO MOD</th>
-          <th>FECHA MOD</th>
+          <th>TIPO</th>
+          <th>ESPECIALIDAD</th>
+          <th>ÁREA</th>
+          <th>MÉTODO</th>
+          <th>MUESTRA</th>
+          <th>FICHA MEDICA</th>
           <th>OPERACIÓN</th>
         </tr>
       </thead>

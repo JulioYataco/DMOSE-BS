@@ -110,7 +110,6 @@ BEGIN
 END $$
 
 
-
 -- PENDIENTE
 DELIMITER $$
 CREATE PROCEDURE spu_empresas_listar_paginacion_buscar(
@@ -123,12 +122,14 @@ BEGIN
 		WHERE nombres LIKE CONCAT('%', _search, '%') LIMIT _limit OFFSET _offset;
 END $$
 
+-- LISTAR
 DELIMITER $$
 CREATE PROCEDURE spu_empresas_listar()
 BEGIN
 	SELECT* FROM EMPRESAS WHERE estado = 1;
 END $$
 
+-- REGISTRAR
 DELIMITER $$
 CREATE PROCEDURE spu_empresas_registrar
 (
@@ -138,19 +139,13 @@ CREATE PROCEDURE spu_empresas_registrar
 	IN _correo 				VARCHAR(100),
 	IN _direccion 		VARCHAR(100),
 	IN _ubigeo 				CHAR(6),
+	IN _acteconomica  TINYTEXT,
 	IN _idusuariocre  INT 			
 )
 BEGIN
-	INSERT INTO EMPRESAS (empresa, razonsocial, ruc, correo, direccion, ubigeo, idusuariocre)
-		VALUES(_empresa, _razonsocial, _ruc, _correo, _direccion, _ubigeo, _idusuariocre);
+	INSERT INTO EMPRESAS (empresa, razonsocial, ruc, correo, direccion, ubigeo, acteconomica, idusuariocre)
+		VALUES(_empresa, _razonsocial, _ruc, _correo, _direccion, _ubigeo, _acteconomica, _idusuariocre);
 END $$
-
-
-SELECT * FROM EMPRESAS;
-
-CALL spu_empresas_registrar('SENATI', 'Servicio Nacional de Adiestramiento en Trabajo Industrial', '45122536363', 'senati@.pe', 'sede pisco', '100401', 1);
-
-
 
 -- TIPO DE EXAMEN --
 ------------------------------------------------------------------------
@@ -174,7 +169,7 @@ DELIMITER $$
 CREATE PROCEDURE spu_tipoexamenes_eliminar (IN _idtipoexamen INT)
 BEGIN
 	UPDATE TIPOEXAMENES SET 
-		estado = 'I'
+		estado = 0
 		WHERE idtipoexamen = _idtipoexamen;
 END $$
 
@@ -183,7 +178,7 @@ DELIMITER $$
 CREATE PROCEDURE spu_tipoexamenes_onedata_listar(IN _idtipoexamen INT)
 BEGIN
 	SELECT * FROM TIPOEXAMENES 
-		WHERE idtipoexamen = _idtipoexamen AND estado = 'A';
+		WHERE idtipoexamen = _idtipoexamen AND estado = 1;
 END $$
 
 -- MODIFICAR
@@ -321,19 +316,25 @@ END $$
 DELIMITER $$
 CREATE PROCEDURE spu_subservicio_registrar 
 (
+	IN _idservicio				INT,
 	IN _nomsubservicio 		VARCHAR(70),
 	IN _tipo 							CHAR(2),
-	IN _idarealaboratorio INT,
 	IN _idespecialidad 		INT,
-	IN _idusuariocre 			INT,
-	IN _idfichamedica 		INT
+	IN _idarea						INT,
+	IN _idmetodo					INT,
+	IN _idmuestra					INT,
+	IN _idfichamedica 		INT,
+	IN _idusuariocre 			INT
+	
 )
 BEGIN
+	IF _idarea = '' THEN SET _idarea = NULL; END IF;
+	IF _idmetodo = '' THEN SET _idmetodo = NULL; END IF;
+	IF _idmuestra = '' THEN SET _idmuestra = NULL; END IF;
 	IF _idfichamedica = '' THEN SET _idfichamedica = NULL; END IF;
-	IF _idarealaboratorio = '' THEN SET _idarealaboratorio = NULL; END IF;
 	
-	INSERT INTO SUBSERVICIOS (nomsubservicio, tipo, idarealaboratorio, idespecialidad, idusuariocre, idfichamedica) 
-		VALUES (_nomsubservicio, _tipo, _idarealaboratorio, _idespecialidad, _idusuariocre, _idfichamedica);
+	INSERT INTO SUBSERVICIOS (idservicio, nomsubservicio, tipo, idespecialidad, idarea, idmetodo, idmuestra, idfichamedica, idusuariocre) 
+		VALUES (_idservicio, _nomsubservicio, _tipo, _idespecialidad, _idarea, _idmetodo, _idmuestra, _idfichamedica, _idusuariocre);
 END $$
 
 
@@ -519,6 +520,7 @@ END $$
 -- SERVICIO --
 -- ----------------------------------------------------------------------
 
+SELECT * FROM SERVICIOS WHERE estado = 1;
 
 -- REGISTRAR
 DELIMITER $$

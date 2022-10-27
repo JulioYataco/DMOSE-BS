@@ -85,20 +85,25 @@ $(document).ready(function() {
         //Capturamos al input
         let nomsubservicio = $("#txtSubservice").val();
         let tipo = $("#txtTipo").val();
-        let idarealaboratorio = $("#txtAreaLaboratorio").val();
+        let idarea = $("#txtArea").val();
+        let idmetodo = $("#txtMetodo").val();
+        let idmuestra = $("#txtMuestra").val();
         let idespecialidad = $("#txtEspecialidad").val();
         let idfichamedica = $("#txtFichaMedica").val();
 
-        if(nomsubservicio == "" || tipo == ""){
-        alert("Por favor, complete los datos");
+        if(tipo == "" || idespecialidad == ""){
+            alert("Por favor, complete los datos");
         }
         else{
             // Creamos un array asosciativo
             var datos = {
                 'operacion'         : 'registerSubservice',
+                'idservicio'        : '12',
                 'nomsubservicio'    : nomsubservicio,
                 'tipo'              : tipo,
-                'idarealaboratorio' : idarealaboratorio,
+                'idarea'            : idarea,
+                'idmetodo'          : idmetodo,
+                'idmuestra'         : idmuestra,
                 'idespecialidad'    : idespecialidad,
                 'idfichamedica'     : idfichamedica
             };
@@ -179,6 +184,7 @@ $(document).ready(function() {
         }); // Fin ajax
     }
 
+    //Cargar fichas medicas
     function cargarFichaMedica(){
         //Enviar datos por ajax, usando el metodo GET
         $.ajax({
@@ -192,6 +198,30 @@ $(document).ready(function() {
             }
         }); // Fin ajax
     }
+
+    //Al dar click cambiar visibilidad de cajas select
+    $("#txtTipo").change(function () {
+        
+        if($(this).val() == 'AN'){
+            $("#txtArea").prop('disabled', false);
+            $("#txtMetodo").prop('disabled', false);
+            $("#txtMuestra").prop('disabled', false);
+            $("#txtFichaMedica").prop('disabled', true);
+        }
+        else if($(this).val() == 'FM'){
+            $("#txtFichaMedica").prop('disabled', false);
+            $("#txtArea").prop('disabled', true);
+            $("#txtMetodo").prop('disabled', true);
+            $("#txtMuestra").prop('disabled', true);
+        }else{
+            $("#txtFichaMedica").prop('disabled', true);
+            $("#txtArea").prop('disabled', true);
+            $("#txtMetodo").prop('disabled', true);
+            $("#txtMuestra").prop('disabled', true);
+        }
+        
+        
+    });
      
     //Capturar ID y contenido para poder modificar
     $("#Subservicio").on("click", ".btnEditarSubservicio", function(){
@@ -285,7 +315,7 @@ $(document).ready(function() {
     })
 
     //Boton que ejecuta la funcion registrar tipo de examen
-    $("#modalBtnGuardar").click(registerSubservice);
+    $("#btnModalGuardarSubservicio").click(registerSubservice);
 
     $("#modalsubservicio").click(function(){
         $("#formsSubservice").removeClass("d-none");
